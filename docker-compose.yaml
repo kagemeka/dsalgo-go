@@ -1,0 +1,6 @@
+services:
+  dev:
+    image: golang:latest
+    tty: true
+    volumes:
+      - .:/root/dsalgo-go/
