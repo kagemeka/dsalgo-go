@@ -1,1 +1,3 @@
-# dsalgo-go
+# dsalgo Go
+
+Datastructures and Algorithms written in Go.
