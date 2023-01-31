@@ -1,16 +1,12 @@
 package dsalgo
 
-
 // /* cut below */
-
-
 
 // type DistXFormCDT struct {
 // 	A IntMatrix
 // 	B IntMatrix
 // 	i, j Int
 // }
-
 
 // func (
 // 	cdt *DistXFormCDT,
@@ -19,7 +15,6 @@ package dsalgo
 // ) {
 // 	cdt.A = a
 // }
-
 
 // func (
 // 	cdt *DistXFormCDT,
@@ -36,7 +31,6 @@ package dsalgo
 // 	}
 // }
 
-
 // func (
 // 	cdt *DistXFormCDT,
 // ) prepareSupport() {
@@ -52,7 +46,6 @@ package dsalgo
 // 	}
 // }
 
-
 // func (
 // 	cdt *DistXFormCDT,
 // ) Taxicab() {
@@ -66,7 +59,6 @@ package dsalgo
 // 	cdt.B.TransPose()
 // }
 
-
 // func (
 // 	cdt *DistXFormCDT,
 // ) CumMin() {
@@ -78,7 +70,6 @@ package dsalgo
 // 		cdt.cumMinSupport()
 // 	}
 // }
-
 
 // func (
 // 	cdt *DistXFormCDT,
