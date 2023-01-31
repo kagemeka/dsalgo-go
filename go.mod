@@ -1,3 +1,3 @@
-module github.com/kagemeka/dsalgo/src/go
+module github.com/kagemeka/dsalgo-go
 
-go 1.18
+go 1.19

@@ -1,4 +1,5 @@
 package dsalgo
+
 // TODO: fix
 // // seg := NewSegmentTree(m Monoid, a []interface{})
 // type SegmentTree struct {

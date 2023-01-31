@@ -1,4 +1,5 @@
 package dsalgo
+
 // TODO: fix
 // query with fenwick tree
 
