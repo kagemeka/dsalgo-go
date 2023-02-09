@@ -1,16 +1,12 @@
 package topology
 
-
 /* cut below */
-
-
 
 type DisjointSet struct {
 	Parent IntSlice
-	Rank IntSlice
-	Size IntSlice
+	Rank   IntSlice
+	Size   IntSlice
 }
-
 
 func (
 	ds *DisjointSet,
@@ -27,7 +23,6 @@ func (
 	ds.Rank = rank
 	ds.Size = size
 }
-
 
 func (
 	ds *DisjointSet,
@@ -47,7 +42,6 @@ func (
 	return
 }
 
-
 func (
 	ds *DisjointSet,
 ) Unite(
@@ -66,10 +60,9 @@ func (
 	size[u] += size[v]
 	rank[u] = Max(
 		rank[u],
-		rank[v] + 1,
+		rank[v]+1,
 	).(Int)
 }
-
 
 func (
 	ds *DisjointSet,
@@ -85,14 +78,11 @@ func (
 	return u, v
 }
 
-
 func (
 	ds *DisjointSet,
 ) Same(
 	u, v Int,
-) (
-	Bool,
-) {
+) Bool {
 	u = ds.Find(u)
 	v = ds.Find(v)
 	return u == v

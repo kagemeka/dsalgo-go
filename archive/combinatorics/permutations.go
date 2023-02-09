@@ -1,18 +1,14 @@
 package combinatorics
 
-
 /* cut below */
 
-
-
 type Permutations struct {
-	S Slice
-	Ch chan Slice
+	S       Slice
+	Ch      chan Slice
 	bufSize Int
-	r Int
-	i int
+	r       Int
+	i       int
 }
-
 
 func (
 	p *Permutations,
@@ -27,7 +23,6 @@ func (
 	)
 }
 
-
 func (
 	p *Permutations,
 ) Gen(
@@ -38,7 +33,6 @@ func (
 	p.genSupport()
 	close(p.Ch)
 }
-
 
 func (
 	p *Permutations,
@@ -60,8 +54,6 @@ func (
 	}
 }
 
-
-
 func Permute(
 	s Slice,
 	r Int,
@@ -75,8 +67,6 @@ func Permute(
 	return
 }
 
-
-
 func (
 	a IntSlice,
 ) Perm(
@@ -88,8 +78,6 @@ func (
 	ch = a.ChTransPort(p)
 	return
 }
-
-
 
 func (
 	n Int,

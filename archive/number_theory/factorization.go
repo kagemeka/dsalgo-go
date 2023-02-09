@@ -1,16 +1,12 @@
 package number_theory
 
-
 /* cut below */
 
-
-
-type Factorization struct{
-	primeNums IntSlice
-	n, p Int
+type Factorization struct {
+	primeNums         IntSlice
+	n, p              Int
 	factors, fFactors MII
 }
-
 
 func (
 	f *Factorization,
@@ -21,7 +17,6 @@ func (
 	pn.Init(n)
 	f.primeNums = pn.Values
 }
-
 
 func (
 	f *Factorization,
@@ -34,8 +29,10 @@ func (
 	f.factors = factors
 	primeNums := f.primeNums
 	for _, p := range primeNums {
-		if n < 2 {return}
-		if p * p > n {
+		if n < 2 {
+			return
+		}
+		if p*p > n {
 			break
 		}
 		f.n, f.p = n, p
@@ -46,19 +43,17 @@ func (
 	return
 }
 
-
 func (
 	f *Factorization,
 ) calcSupport() {
 	n, p := f.n, f.p
 	factors := f.factors
-	for n % p == 0 {
+	for n%p == 0 {
 		factors[p]++
 		n /= p
 	}
 	f.n = n
 }
-
 
 func (
 	f *Factorization,
@@ -69,14 +64,12 @@ func (
 ) {
 	factors = make(MII)
 	f.fFactors = factors
-	for
-	i := Int(1); i < n + 1; i++ {
+	for i := Int(1); i < n+1; i++ {
 		f.n = i
 		f.factorialSupport()
 	}
 	return
 }
-
 
 func (
 	f *Factorization,

@@ -1,9 +1,6 @@
 package combinatorics
 
-
 /* cut below */
-
-
 
 // dfs, n >= 63
 func Cmbs(
@@ -13,7 +10,9 @@ func Cmbs(
 	res [][]interface{},
 ) {
 	n := len(a)
-	if r > n || r < 0 {return}
+	if r > n || r < 0 {
+		return
+	}
 	indices := make([]int, r)
 	for i := 0; i < r; i++ {
 		indices[i] = i
@@ -21,7 +20,7 @@ func Cmbs(
 	res = append(res, a[:r])
 	for {
 		flg := false
-		i := r-1
+		i := r - 1
 		for ; i > -1; i-- {
 			if indices[i] == i+n-r {
 				continue
@@ -29,10 +28,12 @@ func Cmbs(
 			flg = true
 			break
 		}
-		if !flg {return}
+		if !flg {
+			return
+		}
 		indices[i]++
-		for j := i+1; j < r; j++ {
-			indices[j] = indices[j-1]+1
+		for j := i + 1; j < r; j++ {
+			indices[j] = indices[j-1] + 1
 		}
 		tmp := make(
 			[]interface{},

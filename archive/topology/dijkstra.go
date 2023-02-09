@@ -1,20 +1,16 @@
 package topology
 
-
 import (
-	. "kagemeka/general/types"
 	"container/heap"
+	. "kagemeka/general/types"
 )
 
 /* cut below */
-
-
 
 type DijkstraItem struct {
 	Node Int
 	Dist Int
 }
-
 
 func (
 	x DijkstraItem,
@@ -24,18 +20,13 @@ func (
 	return x.Dist < other.Dist
 }
 
-
-
-type DijkstraHeap [
-]DijkstraItem
-
+type DijkstraHeap []DijkstraItem
 
 func (
 	h DijkstraHeap,
 ) Len() int {
 	return len(h)
 }
-
 
 func (
 	h DijkstraHeap,
@@ -45,7 +36,6 @@ func (
 	return bool(h[i].LT(h[j]))
 }
 
-
 func (
 	h DijkstraHeap,
 ) Swap(
@@ -53,7 +43,6 @@ func (
 ) {
 	h[i], h[j] = h[j], h[i]
 }
-
 
 func (
 	h *DijkstraHeap,
@@ -66,7 +55,6 @@ func (
 	)
 }
 
-
 func (
 	h *DijkstraHeap,
 ) Pop() (
@@ -78,21 +66,18 @@ func (
 	return
 }
 
-
-
 type Dijkstra struct {
-	G Graph
-	Heap DijkstraHeap
-	Dist IntSlice
-	Paths ModSlice
+	G           Graph
+	Heap        DijkstraHeap
+	Dist        IntSlice
+	Paths       ModSlice
 	Predecessor IntMatrix
-	src Int
-	inf Int
-	mod Int
-	x DijkstraItem
-	e Edge
+	src         Int
+	inf         Int
+	mod         Int
+	x           DijkstraItem
+	e           Edge
 }
-
 
 func (
 	di *Dijkstra,
@@ -101,7 +86,6 @@ func (
 ) {
 	di.G = g
 }
-
 
 func (
 	di *Dijkstra,
@@ -119,7 +103,6 @@ func (
 	di.InitPredecessor()
 }
 
-
 func (
 	di *Dijkstra,
 ) InitHeap() {
@@ -135,7 +118,6 @@ func (
 	di.Heap = h
 }
 
-
 func (
 	di *Dijkstra,
 ) InitDist() {
@@ -149,7 +131,6 @@ func (
 	dist[src] = 0
 	di.Dist = dist
 }
-
 
 func (
 	di *Dijkstra,
@@ -165,7 +146,6 @@ func (
 	di.Paths = paths
 }
 
-
 func (
 	di *Dijkstra,
 ) InitPredecessor() {
@@ -177,7 +157,6 @@ func (
 	)
 	di.Predecessor = pred
 }
-
 
 func (
 	di *Dijkstra,
@@ -192,28 +171,21 @@ func (
 	}
 }
 
-
 func (
 	di *Dijkstra,
 ) Open() {
 	h := &di.Heap
-	x := (
-		heap.Pop(h).
-		(DijkstraItem))
+	x := (heap.Pop(h).(DijkstraItem))
 	di.x = x
 }
 
-
 func (
 	di *Dijkstra,
-) Searched() (
-	Bool,
-) {
+) Searched() Bool {
 	x := di.x
 	i, d := x.Node, x.Dist
 	return d > di.Dist[i]
 }
-
 
 func (
 	di *Dijkstra,
@@ -225,7 +197,6 @@ func (
 		di.exploreSupport()
 	}
 }
-
 
 func (
 	di *Dijkstra,

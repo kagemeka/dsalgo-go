@@ -1,16 +1,12 @@
 package topology
 
-
 /* cut below */
 
-
-
 type AStarItem struct {
-	Node Int
+	Node    Int
 	C, H, S Int
-	Dist Int
+	Dist    Int
 }
-
 
 func (
 	x AStarItem,
@@ -23,17 +19,13 @@ func (
 	return x.H < other.H
 }
 
-
-
 type AStarHeap []AStarItem
-
 
 func (
 	h AStarHeap,
 ) Len() int {
 	return len(h)
 }
-
 
 func (
 	h AStarHeap,
@@ -43,7 +35,6 @@ func (
 	return bool(h[i].LT(h[j]))
 }
 
-
 func (
 	h AStarHeap,
 ) Swap(
@@ -51,7 +42,6 @@ func (
 ) {
 	h[i], h[j] = h[j], h[i]
 }
-
 
 func (
 	h *AStarHeap,
@@ -64,7 +54,6 @@ func (
 	)
 }
 
-
 func (
 	h *AStarHeap,
 ) Pop() (
@@ -76,27 +65,20 @@ func (
 	return
 }
 
-
-
 type HeuristicFunc func(
 	Int,
-) (
-	Int,
-)
-
-
+) Int
 
 type AStar struct {
-	G Graph
-	Heap AStarHeap
-	Cost IntSlice
-	F HeuristicFunc
+	G        Graph
+	Heap     AStarHeap
+	Cost     IntSlice
+	F        HeuristicFunc
 	src, dst Int
-	inf Int
-	x AStarItem
-	e Edge
+	inf      Int
+	x        AStarItem
+	e        Edge
 }
-
 
 func (
 	a *AStar,
@@ -106,7 +88,6 @@ func (
 	a.G = g
 }
 
-
 func (
 	a *AStar,
 ) SetHeuristicFunc(
@@ -114,7 +95,6 @@ func (
 ) {
 	a.F = f
 }
-
 
 func (
 	a *AStar,
@@ -128,7 +108,6 @@ func (
 	a.InitCost()
 	a.InitHeap()
 }
-
 
 func (
 	a *AStar,
@@ -144,7 +123,6 @@ func (
 	a.Cost = cost
 }
 
-
 func (
 	a *AStar,
 ) InitHeap() {
@@ -157,14 +135,13 @@ func (
 	s := c + hc
 	x := AStarItem{
 		Node: src,
-		C: c,
-		H: hc,
-		S: s,
+		C:    c,
+		H:    hc,
+		S:    s,
 	}
 	heap.Push(&h, x)
 	a.Heap = h
 }
-
 
 func (
 	a *AStar,
@@ -182,39 +159,29 @@ func (
 	}
 }
 
-
 func (
 	a *AStar,
 ) Open() {
 	h := &a.Heap
-	x := (
-		heap.Pop(h).
-		(AStarItem))
+	x := (heap.Pop(h).(AStarItem))
 	a.x = x
 }
 
-
 func (
 	a *AStar,
-) isDst() (
-	Bool,
-) {
+) isDst() Bool {
 	x := a.x
 	i := x.Node
 	return i == a.dst
 }
 
-
 func (
 	a *AStar,
-) Searched() (
-	Bool,
-) {
+) Searched() Bool {
 	x := a.x
 	i, c := x.Node, x.C
 	return c > a.Cost[i]
 }
-
 
 func (
 	a *AStar,
@@ -226,7 +193,6 @@ func (
 		a.exploreSupport()
 	}
 }
-
 
 func (
 	a *AStar,
@@ -244,9 +210,9 @@ func (
 	s := c + h
 	x := AStarItem{
 		Node: v,
-		C: c,
-		H: h,
-		S: s,
+		C:    c,
+		H:    h,
+		S:    s,
 	}
 	heap.Push(&a.Heap, x)
 }

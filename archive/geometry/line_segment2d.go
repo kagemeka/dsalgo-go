@@ -1,14 +1,10 @@
 package geometry
 
-
 /* cut below */
-
-
 
 type LineSegment2D struct {
 	V0, V1 Vector2D
 }
-
 
 func (
 	s LineSegment2D,
@@ -23,10 +19,9 @@ func (
 	return
 }
 
-
 func (
 	s LineSegment2D,
-) Across (
+) Across(
 	other LineSegment2D,
 ) (
 	ok Bool,
@@ -37,10 +32,9 @@ func (
 	o1 := other.Orientation(
 		s.V1,
 	)
-	ok = o0 * o1 <= 0
+	ok = o0*o1 <= 0
 	return
 }
-
 
 func (
 	s LineSegment2D,
@@ -55,8 +49,14 @@ func (
 		v,
 	}
 	a := t.SignedArea()
-	if a < 0 {return -1}
-	if a == 0 {return 0}
-	if a > 0 {return 1}
+	if a < 0 {
+		return -1
+	}
+	if a == 0 {
+		return 0
+	}
+	if a > 0 {
+		return 1
+	}
 	return
 }

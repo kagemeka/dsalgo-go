@@ -2,8 +2,6 @@ package combinatorics
 
 /* cut below */
 
-
-
 func (
 	i Int,
 ) NxtCmb() (

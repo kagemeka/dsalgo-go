@@ -1,19 +1,15 @@
 package topology
 
-
 /* cut below */
 
-
-
-type Dinic struct{
-	G Graph
-	Level IntSlice
-	Src, Sink Int
-	u Int
-	e Edge
+type Dinic struct {
+	G          Graph
+	Level      IntSlice
+	Src, Sink  Int
+	u          Int
+	e          Edge
 	in, out, f Int
 }
-
 
 func (
 	di *Dinic,
@@ -23,7 +19,6 @@ func (
 	di.G = g
 }
 
-
 func (
 	di *Dinic,
 ) Prepare(
@@ -32,7 +27,6 @@ func (
 	di.Src = Src
 	di.Sink = Sink
 }
-
 
 func (
 	di *Dinic,
@@ -55,7 +49,6 @@ func (
 	}
 }
 
-
 func (
 	di *Dinic,
 ) updateLevel() {
@@ -65,7 +58,6 @@ func (
 	bfs.Search()
 	di.Level = bfs.Level
 }
-
 
 func (
 	di *Dinic,
@@ -88,7 +80,6 @@ func (
 	}
 }
 
-
 func (
 	di *Dinic,
 ) flowToSinkSupport() {
@@ -100,13 +91,11 @@ func (
 	di.updateFlow()
 }
 
-
 func (
 	di *Dinic,
 ) updateFlow() {
 	di.out += di.f
 }
-
 
 func (
 	di *Dinic,
@@ -123,13 +112,12 @@ func (
 	}
 	u := di.u
 	e = Edge{
-		From: v,
-		To: u,
+		From:     v,
+		To:       u,
 		Capacity: f,
 	}
 	di.G.AddEdge(e)
 }
-
 
 func (
 	di *Dinic,
@@ -140,7 +128,7 @@ func (
 	out := di.out
 	di.u = e.To
 	di.in = Min(
-		in - out,
+		in-out,
 		e.Capacity,
 	).(Int)
 	di.out = 0
@@ -151,7 +139,6 @@ func (
 	di.in = in
 	di.out = out
 }
-
 
 func (
 	di *Dinic,
