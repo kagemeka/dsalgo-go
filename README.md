@@ -1,16 +1,26 @@
-# dsalgo Go
+# dsalgo
 
-Datastructures and Algorithms written in Go.
+Datastructures and Algorithms.
 
-## how to use
+[![Go Reference](https://pkg.go.dev/badge/github.com/kagemeka/dsalgo-go.svg)](https://pkg.go.dev/github.com/kagemeka/dsalgo-go)
+[![package][ci-badge]][ci-url]
+[![License: MIT][mit-badge]][mit-url]
+[![pre-commit][pre-commit-badge]][pre-commit-url]
 
-### install
+[ci-badge]: https://github.com/kagemeka/dsalgo-go/actions/workflows/ci.yml/badge.svg
+[ci-url]: https://github.com/kagemeka/dsalgo-go/actions/workflows/ci.yml
+[pre-commit-badge]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=yellow
+[pre-commit-url]: https://github.com/pre-commit/pre-commit
+[mit-badge]: https://img.shields.io/badge/License-MIT-green.svg
+[mit-url]: https://opensource.org/licenses/MIT
+
+## install
 
 ```sh
 go get -u github.com/kagemeka/dsalgo-go/...
 ```
 
-### import to your codes
+## example
 
 ```go
 package main
@@ -22,35 +32,13 @@ func main() {
 }
 ```
 
-## document
-
-<https://pkg.go.dev/github.com/kagemeka/dsalgo-go>
-
-## structure
-
-- cp
-  - easy package for competitive programming.
-  - it can be bundled into one submission file.
-  - simple or no tests.
-
-- src
-  - packages for deep and wide range of datastructures/algorithms.
-  - multiple implementation for each algorithm.
-  - well tested.
-  - package naming is not satisfying some standard convention to avoid namespace conflict.
-    - voiolating a rule "abbreviated or short name".
-    - each package name is same to the directory and file name.
-    - snake_case
-
 ## development
-
-### use docker
 
 ```sh
 docker compose up -d
 ```
 
-### CI locally before commit & push
+(enter the container)
 
 ```sh
 ./ci.sh
