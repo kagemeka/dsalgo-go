@@ -1,9 +1,6 @@
 package number_theory
 
-
 /* cut below */
-
-
 
 func (
 	i Int,

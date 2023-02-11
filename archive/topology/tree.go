@@ -1,12 +1,8 @@
 package topology
 
-
 /* cut below */
 
-
-
 type Tree Graph
-
 
 func (
 	g *Tree,
@@ -14,7 +10,7 @@ func (
 	nodes := make(NodeSlice, n)
 	edges := make(EdgeMatrix, n)
 	for i := Int(0); i < n; i++ {
-		e :=  make(
+		e := make(
 			EdgeSlice,
 			0,
 		)
@@ -24,14 +20,12 @@ func (
 	g.Edges = edges
 }
 
-
 func (
 	g *Tree,
 ) AddEdge(e Edge) {
 	u := e.From
 	g.Edges[u].Push(e)
 }
-
 
 func (
 	g *Tree,
@@ -43,7 +37,6 @@ func (
 	}
 }
 
-
 func (
 	g *Tree,
 ) AddNode(
@@ -51,7 +44,6 @@ func (
 ) {
 	g.Nodes[v.ID] = v
 }
-
 
 func (
 	g *Tree,

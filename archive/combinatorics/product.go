@@ -1,18 +1,14 @@
 package combinatorics
 
-
 /* cut below */
 
-
-
 type Product struct {
-	S Slice
-	Ch chan Slice
+	S       Slice
+	Ch      chan Slice
 	bufSize Int
-	r Int
-	a Slice
+	r       Int
+	a       Slice
 }
-
 
 func (
 	p *Product,
@@ -28,7 +24,6 @@ func (
 	p.a = s.Clone().Sub(0, 0)
 }
 
-
 func (
 	p *Product,
 ) Gen(
@@ -38,7 +33,6 @@ func (
 	p.genSupport()
 	close(p.Ch)
 }
-
 
 func (
 	p *Product,
@@ -59,8 +53,6 @@ func (
 	}
 }
 
-
-
 func Prod(
 	s Slice,
 	r Int,
@@ -74,8 +66,6 @@ func Prod(
 	return
 }
 
-
-
 func (
 	a IntSlice,
 ) Prod(
@@ -87,8 +77,6 @@ func (
 	ch = a.ChTransPort(p)
 	return
 }
-
-
 
 func (
 	n Int,

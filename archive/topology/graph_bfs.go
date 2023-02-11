@@ -1,16 +1,12 @@
 package topology
 
-
 /* cut below */
 
-
-
 type GraphBFS struct {
-	G Graph
+	G     Graph
 	Level IntSlice
-	Que IntSlice
+	Que   IntSlice
 }
-
 
 func (
 	bfs *GraphBFS,
@@ -19,7 +15,6 @@ func (
 ) {
 	bfs.G = g
 }
-
 
 func (
 	bfs *GraphBFS,
@@ -41,7 +36,6 @@ func (
 	bfs.Que = que
 }
 
-
 func (
 	bfs *GraphBFS,
 ) Search() {
@@ -52,7 +46,6 @@ func (
 	}
 }
 
-
 func (
 	bfs *GraphBFS,
 ) Explore(
@@ -62,8 +55,7 @@ func (
 	g := &bfs.G
 	que := &bfs.Que
 	lv := &bfs.Level
-	for
-	_, e := range g.Edges[u] {
+	for _, e := range g.Edges[u] {
 		v := e.To
 		if (*lv)[v] != -1 {
 			continue

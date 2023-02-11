@@ -1,19 +1,15 @@
 package topology
 
-
 /* cut below */
 
-
-
 type TreeBFS struct {
-	G Tree
-	Root Int
-	Depth IntSlice
-	Dist IntSlice
+	G      Tree
+	Root   Int
+	Depth  IntSlice
+	Dist   IntSlice
 	Parent IntSlice
-	Que IntSlice
+	Que    IntSlice
 }
-
 
 func (
 	bfs *TreeBFS,
@@ -22,7 +18,6 @@ func (
 ) {
 	bfs.G = g
 }
-
 
 func (
 	bfs *TreeBFS,
@@ -56,7 +51,6 @@ func (
 	bfs.Que = que
 }
 
-
 func (
 	bfs *TreeBFS,
 ) Search() {
@@ -66,7 +60,6 @@ func (
 		bfs.Explore(x)
 	}
 }
-
 
 func (
 	bfs *TreeBFS,
@@ -79,8 +72,7 @@ func (
 	depth := bfs.Depth
 	dist := bfs.Dist
 	parent := bfs.Parent
-	for
-	_, e := range g.Edges[u] {
+	for _, e := range g.Edges[u] {
 		v := e.To
 		d := e.Weight
 		if depth[v] != -1 {

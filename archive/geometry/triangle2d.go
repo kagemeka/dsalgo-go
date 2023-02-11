@@ -1,14 +1,10 @@
 package geometry
 
-
 /* cut below */
-
-
 
 type Triangle2D struct {
 	V0, V1, V2 Vector2D
 }
-
 
 func (
 	t Triangle2D,
@@ -30,15 +26,11 @@ func (
 	return
 }
 
-
 func (
 	t Triangle2D,
-) Area() (
-	Float,
-) {
+) Area() Float {
 	s :=
 		t.SignedArea().
-		Abs().
-		(Float)
+			Abs().(Float)
 	return s
 }

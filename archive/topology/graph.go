@@ -1,40 +1,27 @@
 package topology
 
-
 /* cut below */
-
-
 
 type Node struct {
 	ID Int
 }
 
-
 func (
 	v Node,
-) String() (
-	string,
-) {
+) String() string {
 	return fmt.Sprint(v.ID)
 }
 
-
-
 type NodeSlice []Node
 
-
-
 type Edge struct {
-	ID Int
+	ID       Int
 	From, To Int
-	Weight Int
+	Weight   Int
 	Capacity Int
 }
 
-
-
 type EdgeSlice []Edge
-
 
 func (
 	edges *EdgeSlice,
@@ -47,17 +34,12 @@ func (
 	)
 }
 
-
-
 type EdgeMatrix []EdgeSlice
-
-
 
 type Graph struct {
 	Nodes NodeSlice
 	Edges EdgeMatrix
 }
-
 
 func (
 	g *Graph,
@@ -65,7 +47,7 @@ func (
 	nodes := make(NodeSlice, n)
 	edges := make(EdgeMatrix, n)
 	for i := Int(0); i < n; i++ {
-		e :=  make(
+		e := make(
 			EdgeSlice,
 			0,
 		)
@@ -75,14 +57,12 @@ func (
 	g.Edges = edges
 }
 
-
 func (
 	g *Graph,
 ) AddEdge(e Edge) {
 	u := e.From
 	g.Edges[u].Push(e)
 }
-
 
 func (
 	g *Graph,
@@ -94,7 +74,6 @@ func (
 	}
 }
 
-
 func (
 	g *Graph,
 ) AddNode(
@@ -102,7 +81,6 @@ func (
 ) {
 	g.Nodes[v.ID] = v
 }
-
 
 func (
 	g *Graph,

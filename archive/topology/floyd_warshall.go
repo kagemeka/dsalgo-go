@@ -2,14 +2,11 @@ package topology
 
 /* cut below */
 
-
-
 type FloydWarshall struct {
-	G Graph
-	Dist IntMatrix
+	G             Graph
+	Dist          IntMatrix
 	src, mid, dst int
 }
-
 
 func (
 	fw *FloydWarshall,
@@ -18,7 +15,6 @@ func (
 ) {
 	fw.G = g
 }
-
 
 func (
 	fw *FloydWarshall,
@@ -40,7 +36,6 @@ func (
 	}
 }
 
-
 func (
 	fw *FloydWarshall,
 ) prepareSupport(
@@ -48,8 +43,7 @@ func (
 ) {
 	g := &fw.G
 	dist := fw.Dist
-	for
-	_, e := range g.Edges[i] {
+	for _, e := range g.Edges[i] {
 		j := e.To
 		d := e.Weight
 		dist[i][j] = Min(
@@ -58,7 +52,6 @@ func (
 		).(Int)
 	}
 }
-
 
 func (
 	fw *FloydWarshall,
@@ -70,7 +63,6 @@ func (
 	}
 }
 
-
 func (
 	fw *FloydWarshall,
 ) searchSupport0() {
@@ -81,7 +73,6 @@ func (
 	}
 }
 
-
 func (
 	fw *FloydWarshall,
 ) searchSupport1() {
@@ -91,7 +82,7 @@ func (
 	for j := 0; j < n; j++ {
 		d[i][j] = Min(
 			d[i][j],
-			d[i][k] + d[k][j],
+			d[i][k]+d[k][j],
 		).(Int)
 	}
 }

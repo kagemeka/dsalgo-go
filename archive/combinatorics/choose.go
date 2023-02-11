@@ -1,19 +1,13 @@
 package combinatorics
 
-
 /* cut below */
-
-
 
 type Binom map[PII]Modular
 
-
-
 type Choose struct {
 	cache Binom
-	mod Int
+	mod   Int
 }
-
 
 func (
 	c *Choose,
@@ -23,7 +17,6 @@ func (
 	c.cache = make(Binom)
 	c.mod = mod
 }
-
 
 func (
 	c *Choose,
@@ -44,20 +37,17 @@ func (
 	if v, ok := cache[i]; ok {
 		return v
 	}
-	v = c.Calc(n - 1, r)
-	v.IAdd(c.Calc(n - 1, r - 1))
+	v = c.Calc(n-1, r)
+	v.IAdd(c.Calc(n-1, r-1))
 	cache[i] = v
 	return
 }
 
-
 func (
 	c *Choose,
-) Calculator() (
-	func(
-		Int,
-		Int,
-	) Modular,
-) {
+) Calculator() func(
+	Int,
+	Int,
+) Modular {
 	return c.Calc
 }

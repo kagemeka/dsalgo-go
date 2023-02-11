@@ -1,22 +1,17 @@
 package combinatorics
 
-
 import (
-	. "kagemeka/general/types"
 	. "kagemeka/dsa/algebra/modular"
+	. "kagemeka/general/types"
 )
-
 
 /* cut below */
 
-
-
 type ModChoose struct {
-	Fact ModSlice
+	Fact    ModSlice
 	InvFact ModSlice
-	Mod Int
+	Mod     Int
 }
-
 
 func (
 	c *ModChoose,
@@ -27,31 +22,26 @@ func (
 	c.Mod = n.Mod
 }
 
-
 func (
 	c *ModChoose,
-) Calc(n, r Int) (
-	Modular,
-) {
+) Calc(n, r Int) Modular {
 	if r < 0 || r > n {
 		return Modular{0, c.Mod}
 	}
 	return c.Fact[n].Mul(
 		c.InvFact[r],
 	).Mul(
-		c.InvFact[n - r],
+		c.InvFact[n-r],
 	)
 }
-
 
 func (
 	c *ModChoose,
 ) Calculator() (
 	choose func(
 		n, r Int,
-	) (
-		Modular,
-	),
+	) Modular,
+
 ) {
 	return c.Calc
 }

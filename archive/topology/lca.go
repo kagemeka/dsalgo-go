@@ -1,18 +1,14 @@
 package topology
 
-
 /* cut below */
 
-
-
 type LCA struct {
-	G Tree
-	Parent IntSlice
+	G         Tree
+	Parent    IntSlice
 	Ancestors IntMatrix
-	Dist IntSlice
-	Depth IntSlice
+	Dist      IntSlice
+	Depth     IntSlice
 }
-
 
 func (
 	l *LCA,
@@ -21,7 +17,6 @@ func (
 ) {
 	l.G = g
 }
-
 
 func (
 	l *LCA,
@@ -37,7 +32,6 @@ func (
 	l.Dist = bfs.Dist
 }
 
-
 func (
 	l *LCA,
 ) FindAncestors() {
@@ -51,12 +45,10 @@ func (
 	)
 	ancestors[0] = l.Parent
 	l.Ancestors = ancestors
-	for
-	i := Int(0); i < m - 1; i++ {
+	for i := Int(0); i < m-1; i++ {
 		l.nxtAncestor(i)
 	}
 }
-
 
 func (
 	l *LCA,
@@ -72,9 +64,8 @@ func (
 	for i := Int(0); i < n; i++ {
 		y[i] = x[x[i]]
 	}
-	l.Ancestors[i + 1] = y
+	l.Ancestors[i+1] = y
 }
-
 
 func (
 	l *LCA,
@@ -87,10 +78,9 @@ func (
 	dv := l.Dist[v]
 	lca := l.FindLCA(u, v)
 	dLCA := l.Dist[lca]
-	d = du + dv - 2 * dLCA
+	d = du + dv - 2*dLCA
 	return
 }
-
 
 func (
 	l *LCA,
@@ -104,7 +94,7 @@ func (
 	dv := l.Depth[v]
 	v = l.upStream(
 		v,
-		dv - du,
+		dv-du,
 	)
 	if v == u {
 		lca = u
@@ -117,7 +107,6 @@ func (
 	)
 	return
 }
-
 
 func (
 	l *LCA,
@@ -134,25 +123,21 @@ func (
 	return u, v
 }
 
-
 func (
 	l *LCA,
 ) upStream(
 	v Int,
 	d Int,
-) (
-	Int,
-){
+) Int {
 	n := d.BitLen()
 	for i := Int(0); i < n; i++ {
-		if ^d >> i & 1 == 1 {
+		if ^d>>i&1 == 1 {
 			continue
 		}
 		v = l.Ancestors[i][v]
 	}
 	return v
 }
-
 
 func (
 	l *LCA,
@@ -164,8 +149,7 @@ func (
 ) {
 	n := dep.BitLen()
 	ancs := l.Ancestors
-	for
-	i := n - 1; i > -1; i-- {
+	for i := n - 1; i > -1; i-- {
 		anc := ancs[i]
 		nu, nv := anc[u], anc[v]
 		if nu == nv {

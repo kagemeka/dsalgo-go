@@ -1,16 +1,12 @@
 package number_theory
 
-
 /* cut below */
 
-
-
 type PrimeNum struct {
-	Values IntSlice
+	Values  IntSlice
 	IsPrime BoolSlice
-	n, i Int
+	n, i    Int
 }
-
 
 func (
 	pn *PrimeNum,
@@ -21,7 +17,6 @@ func (
 	pn.SieveOfEratosthenes()
 	pn.Sparse()
 }
-
 
 func (
 	pn *PrimeNum,
@@ -34,10 +29,7 @@ func (
 	isPrime[0] = false
 	isPrime[1] = false
 	pn.IsPrime = isPrime
-	for
-	i := Int(0);
-	i * i < n;
-	i++ {
+	for i := Int(0); i*i < n; i++ {
 		if !isPrime[i] {
 			continue
 		}
@@ -46,20 +38,15 @@ func (
 	}
 }
 
-
 func (
 	pn *PrimeNum,
 ) sieveSupport() {
 	n, i := pn.n, pn.i
 	isPrime := pn.IsPrime
-	for
-	j := Int(i * 2);
-	j < n;
-	j += i {
+	for j := Int(i * 2); j < n; j += i {
 		isPrime[j] = false
 	}
 }
-
 
 func (
 	pn *PrimeNum,
@@ -80,7 +67,6 @@ func (
 	}
 	pn.Values = primeNums
 }
-
 
 func (
 	pn *PrimeNum,
